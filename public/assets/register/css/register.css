@@ -1,0 +1,195 @@
+*
+{
+	margin:0;
+	padding:0;
+	font-family: sans-serif;
+}
+body{background-color: #282938;}
+/*#container
+{
+	width: 50%;
+	margin:10% auto;
+	position: relative;
+}*/
+#container fieldset
+{
+	background-color:#fff;
+	padding:50px;
+	border:none;
+	width: 50%;
+	margin: 10px auto;
+	box-shadow: 0 1px 1px 1px rgba(0,0,0,0.5);
+/*	position: absolute;*/
+/*	margin:10px 0;*/
+}
+#container fieldset:not(:first-of-type)
+{
+	display: none;
+}
+#progress-bar
+{
+	margin-bottom: 30px;
+	overflow: hidden;
+	text-align: center;
+	color: #fff;
+	width: 50%;
+	margin:50px auto;
+}
+#progress-bar
+{
+	counter-reset: step;
+}
+#progress-bar li
+{
+	float: left;
+	list-style-type: none;
+	width: 20%;
+	position: relative;
+}
+#progress-bar li:before
+{
+	content: counter(step);
+	counter-increment: step;
+	text-align: center;
+	display: block;
+	margin: 0 auto 15px auto;
+	height: 20px;
+	width: 20px;
+	background-color: #282938;
+}
+#progress-bar li:after
+{
+	content: '';
+	position: absolute;
+	top: 10px;
+	left: -70px;
+	width: 100%;
+	height: 2px;
+	/*background-color:#f2f2f2;*/
+	z-index: -1;
+}
+#progress-bar li:first-child:after
+{
+	content: none;
+}
+#progress-bar li.active
+{
+	color:rgba(3, 201, 169,1);
+}
+#progress-bar li:before.active
+{
+	border:1px solid rgba(3, 201, 169,1);
+}
+#progress-bar li.active + li:after
+{
+	/*background-color:rgba(3, 201, 169,1);*/
+}
+.title
+{
+	text-align: center;
+}
+.input-cont
+{
+	position: relative;
+	margin-top: 30px;
+}
+.form-input{
+	margin:50px 0;
+}
+.form-input iframe
+{
+	width: 100%;
+	height: 500px;
+}
+.label-custom
+{
+	position: absolute;
+	top: 1px;
+	transition: 0.3s ease all;
+	font-size: 18px;
+	color: #999;
+}
+.input-cont input[type="text"] ,
+.input-cont input[type="time"] ,
+.input-cont input[type="number"] ,
+.input-cont select ,
+.input-cont input[type="email"] ,
+.input-cont input[type="password"] ,
+.input-cont input[type="date"] ,
+.input-cont input[type="button"] ,
+.input-cont input[type="submit"]
+{
+	display: block;
+	margin:10px auto;
+	border:none;
+	outline: none;
+}
+input[type=date]:required:invalid::-webkit-datetime-edit {
+    color: transparent;
+}
+.input-cont input[type="file"]
+{
+	width: 100%;
+	padding:10px;
+	display: none;
+}
+
+.input-cont input[type="text"] ,
+.input-cont input[type="number"] ,
+.input-cont input[type="email"] ,
+.input-cont input[type="password"] ,
+.input-cont input[type="date"] ,
+.input-cont select
+{
+	width: 100%;
+	padding:10px;
+	border-bottom:1px solid #eee;
+}
+.input-cont input:focus ~ label , .input-cont input:valid ~ label
+{
+	top: -20px;
+	font-size: 15px;
+}
+.button-direct
+{
+	text-align: center;
+}
+.button-direct input[type="button"] , .button-direct input[type="submit"]
+{
+	padding:5px;
+	border:none;
+	background-color: rgba(240,52,52,0.9);
+	padding:10px 20px;
+	border-radius:5px;
+	color: #f2f2f2;
+	width: 100px;
+}
+.button-direct input[type="button"]:hover
+{
+	transition: 0.1s;
+	box-shadow: 0 0 0 2px white, 0 0 0 3px rgba(240,52,52,0.9);
+}
+.text-label
+{
+	font-size: 18px;
+	color: #999;
+	display:block;
+}
+.radio-btn
+{
+	display: inline-block;
+	margin:30px 10px 30px 0;
+}
+.custom-file
+{
+	border: 1px solid #ccc;
+	display: inline-block;
+	padding: 6px 12px;
+	cursor: pointer;
+	color: #999;
+}
+.custom-file:hover
+{
+	color: #000;
+	transition: 0.1s;
+}
