@@ -56,6 +56,13 @@ class User extends Model
                 ->get();
         return $query;
     }
+    public function getUser($id)
+    {
+        $query = $this->db->table('users')
+                ->where('id_token', $id)
+                ->get();
+        return $query;
+    }
 
     public function getUserDetailSiswa()
     {

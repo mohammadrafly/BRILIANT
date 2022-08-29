@@ -151,6 +151,7 @@ class ExampController extends BaseController
     {
         $model = new Answer();
         $modelM = new Course();
+        $user = new User();
         $id_user = $this->request->getVar('id_user');
         $pertanyaan = $this->request->getVar('pertanyaan');
         $answer = $this->request->getVar('answer');
@@ -173,10 +174,26 @@ class ExampController extends BaseController
                 'status' => 'done',
                 'score' => $persen,
             ];
-            //dd($diff,$persen,count($diff),$jmldata);
             $modelM->update($id, $status);
+            if ($persen >= 75) {
+                $ids = session()->get('id_token');
+                $check = $user->where('id_token', $ids)->first();
+                //$check = $user->where('id_token', $id_user)->first();
+                $data_user = [
+                    'is_verified' => 'yes'
+                ];
+                $user->update($check['id'], $data_user);
+                //dd($user->find($id_user));
+                session()->setFlashdata('success', 'Anda telah submit ujian dengan score '.$persen);
+                return redirect()->to('dashboard/tutor/examp/'.session()->get('id_token'));
+            } else {
+                $modelM->update($id, $status);
+                $msg = 'Score anda tidak memenuhi syarat. silahkan coba lagi di ujian selanjutnya!';
+                session()->setFlashdata('success', $msg);
+                return redirect()->to('dashboard/tutor/examp/'.session()->get('id_token'));
+            }
+            //dd($diff,$persen,count($diff),$jmldata);
+            
         }
-        session()->setFlashdata('success', 'Anda telah submit ujian dengan score '.$persen);
-        return redirect()->to('dashboard/tutor/examp/'.session()->get('id_token'));
     }
 }

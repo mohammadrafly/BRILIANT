@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\Transaction;
 use App\Models\Jadwal;
+use App\Models\User;
 use App\Models\UserDetailSiswa;
 
 class TransaksiController extends BaseController

@@ -85,7 +85,6 @@ class UserController extends BaseController
         $modelUDS = new UserDetailSiswa();
         if ($role === 'tutor') {
             $data = [
-                'is_verified' => $req->getVar('is_verified'),
                 'role' => $role,
             ];
             if ($model->update($id, $data)) {
